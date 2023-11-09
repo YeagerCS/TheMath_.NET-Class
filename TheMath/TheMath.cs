@@ -92,22 +92,13 @@ namespace TheMath
             }
         }
 
-        private static double TheNewtonsMethodLnF(double y, double x)
-        {
-            return TheExp(y) - x;
-        }
-
-        private static double TheNewtonsMethodLnDerivativeF(double y)
-        {
-            return TheExp(y);
-        }
 
         public static double TheLn(double x)
         {
             double y = 1;
             for(int n = 0; n < 100; n++)
             {
-                y = y - (TheNewtonsMethodLnF(y, x) / TheNewtonsMethodLnDerivativeF(y));
+                y = y - (NewtonsMethod.LnF(y, x) / NewtonsMethod.LnDerivativeF(y));
             }
             return y;
         }
@@ -117,19 +108,10 @@ namespace TheMath
             double y = x / 2;
             for(int n = 0; n < 30;n++)
             {
-                y = y - (TheNewtonsMethodSqrtF(y, x) / TheNewtonsMethodSqrtDerivativeF(y));
+                y = y - (NewtonsMethod.SqrtF(y, x) / NewtonsMethod.SqrtDerivativeF(y));
             }
             return y;
         }
 
-        private static double TheNewtonsMethodSqrtF(double y, double x)
-        {
-            return ThePow(y, 2) - x;
-        }
-
-        private static double TheNewtonsMethodSqrtDerivativeF(double y)
-        {
-            return 2 * y;
-        }
     }
 }

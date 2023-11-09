@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(TheMath.TheSqrt(1577536));
+            Console.WriteLine(TheMath.TheLn(2));
         }
 
         public void Test()
