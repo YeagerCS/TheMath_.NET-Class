@@ -90,3 +90,10 @@ The definite integral is calculated using the trapezoidal rule:
 <p align="center">
   <img src="https://www.bragitoff.com/wp-content/uploads/2015/08/TrapezoidRule1.png" alt="trapezoidal rule" width="500"/>
 </p>
+
+## Sources
+Images:
+- <a href="pbs.twimg.com">Pbs Twimg</a>
+- <a href="encrypted-tbn0.gstatic.com">encrypted-tbn0.gstatic.com</a>
+- <a href="www.rapidtables.com">Rapidtables</a>
+- <a href="www.bragitoff.com">Bragitoff</a>
