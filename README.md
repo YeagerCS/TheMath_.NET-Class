@@ -93,7 +93,7 @@ The definite integral is calculated using the trapezoidal rule:
 
 ## Sources
 Images:
-- <a href="pbs.twimg.com">Pbs Twimg</a>
-- <a href="encrypted-tbn0.gstatic.com">encrypted-tbn0.gstatic.com</a>
-- <a href="www.rapidtables.com">Rapidtables</a>
-- <a href="www.bragitoff.com">Bragitoff</a>
+- <a href="https://pbs.twimg.com">Pbs Twimg</a>
+- <a href="https://encrypted-tbn0.gstatic.com">encrypted-tbn0.gstatic.com</a>
+- <a href="https://www.rapidtables.com">Rapidtables</a>
+- <a href="https://www.bragitoff.com">Bragitoff</a>
