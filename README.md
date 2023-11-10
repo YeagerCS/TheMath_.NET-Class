@@ -1,4 +1,4 @@
-# TheMath_.NET-Class
+# Functions
 
 ## Constants
 - E = 2.7182818284590452353
@@ -58,3 +58,11 @@
 
 ## Calculus
 - Integral(func, a, b) => returns the definite integral of the function string 'func' going from a to b.
+
+# Details
+
+## Newtons Method
+Some functions like ln(x), sqrt(x) and nroot(x) are calculated using Newtons method which states the following:
+<p align="center">
+  <img src="Price_Functions.jpg" alt="drawing" width="300"/> <img src="Function_Graph.jpg" alt="drawing" width="435"/> 
+</p>
