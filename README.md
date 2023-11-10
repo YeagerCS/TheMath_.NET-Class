@@ -64,5 +64,9 @@
 ## Newtons Method
 Some functions like ln(x), sqrt(x) and nroot(x) are calculated using Newtons method which states the following:
 <p align="center">
-  <img src="Price_Functions.jpg" alt="drawing" width="300"/> <img src="Function_Graph.jpg" alt="drawing" width="435"/> 
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnEnTP7CqA8POv-vPOINI3K2vkLFErO-dJSP3l_UxCHu6ZXRDJgArCkEZR-LVI8kl7xIY&usqp=CAU" alt="newtons method" width="500"/>
 </p>
+This method allows for a efficient and accurate calculation of these functions.
+
+## Inverse Trig functions
+The simplest and most accurate algorithm to code is the arctan(x), which is why the other inverse functions are defined using an arctan identity. These are the deriviations of this type of identities:
