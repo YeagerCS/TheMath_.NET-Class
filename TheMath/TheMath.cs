@@ -37,6 +37,11 @@ namespace TheMath
             return a == b;
         }
 
+        public static double TheHyp(int a, int b)
+        {
+            return TheSqrt(ThePow(a, 2) + ThePow(b, 2));
+        }
+
         private static double TheSimplePow(double n, uint x)
         {
             double result = 1;
@@ -134,6 +139,16 @@ namespace TheMath
             return y;
         }
 
+        public static double TheNthRoot(double n, double x)
+        {
+            double y = x / n;
+            for(int i = 0; i < 100; i++)
+            {
+                y = y - (NewtonsMethod.NrootF(y, n, x) / NewtonsMethod.NRootDerivativeF(y, n));
+            }
+            return y;
+        }
+
         //Exponential
 
         //By Maclaurin series of e^x
@@ -227,6 +242,56 @@ namespace TheMath
         {
             x = DEGREES_TO_RADIANS * x;
             return TheSin(x);
+        }
+
+        //D = R \ [nPI]
+        /// <summary>
+        /// The angle <param>x</param> in radians
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns>The cosecant (inverse sine) of x</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static double TheCsc(double x)
+        {
+            x = ReduceAngle(x);
+            if(x % PI == 0)
+            {
+                throw new ArgumentException("X is outside of the domain of csc x");
+            }
+
+            return 1 / TheSin(x);
+        }
+
+        /// <summary>
+        /// The angle <param>x</param> in radians
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns>The secant (inverse cosine) of x</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static double TheSec(double x)
+        {
+            x = ReduceAngle(x);
+            if(x % (PI / 2) == 0)
+            {
+                throw new ArgumentException("X is outside of the domain of sec x");
+            }
+            return 1 / TheCos(x);
+        }
+
+        /// <summary>
+        /// The angle <param>x</param> in radians
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns>The cotangent (inverse tangent) of x</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static double TheCot(double x)
+        {
+            if(x % PI == 0)
+            {
+                throw new ArgumentException("X is outside of the domain of cot x");
+            }
+
+            return 1 / TheTan(x);
         }
 
         //by identity cos(x) = sin(π / 2 - x)
@@ -366,7 +431,7 @@ namespace TheMath
             return x;
         }
 
-
+    
         // Hyperbolic Trigonometric
 
         //by sinh(x) =  (e^x - e^-x) / 2
@@ -453,6 +518,47 @@ namespace TheMath
                 throw new ArgumentException("Input x must be greater than -1 and less than 1");
             }
         }
+
+
+        //Rounding / Floor / Ceil
+
+        public static int TheRound(double x)
+        {
+            int result = 0;
+            string[] splittedString = x.ToString().Split(".");
+            if(splittedString.Length > 1)
+            {
+                string decimalString = splittedString[1];
+                double decimals = Convert.ToInt64(decimalString) / ThePow(10, decimalString.Length);
+
+                if(decimals >= .5)
+                {
+                    //Round up
+                    result = (int)x + 1;
+                }
+                else
+                {
+                    result = (int)x;
+                }
+            }
+            else
+            {
+                return (int)x;
+            }
+
+            return result;
+        }
+
+        public static int TheFloor(double x)
+        {
+            return (int)x;
+        }
+
+        public static int TheCeil(double x)
+        {
+            return (int)x + 1;
+        }
+
 
     }
 }

@@ -1,11 +1,12 @@
-﻿namespace TheMath
+﻿using MathNet.Symbolics;
+
+namespace TheMath
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            
-            Console.WriteLine(TheMath.TheIntegral("log10(x)ln(x)x^3", 1, 3));
+            Console.WriteLine(TheMath.TheNthRoot(2, 512));
         }
 
         public void Test()

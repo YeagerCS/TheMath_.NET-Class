@@ -35,5 +35,19 @@ namespace TheMath
         {
             return 2 * y;
         }
+
+        //nroot(x) = y | ()^n
+        //x = y^n
+        //y^n - x = 0; f(y) = y^n -x
+        public static double NrootF(double y, double n, double x)
+        {
+            return TheMath.ThePow(y, n) - x;
+        }
+
+        //f'(y) = d/dy(y^n -x) = ny^n-1
+        public static double NRootDerivativeF(double y, double n)
+        {
+            return n * TheMath.ThePow(y, n - 1);
+        }
     }
 }
