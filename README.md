@@ -36,11 +36,19 @@
 - Sec(x) => returns the secant of an angle, x in radians.
 - Cot(x) => returns the cotangent of an angle, x in radians.
 
+## Trigonometry Extras
+- ReduceAngle(x) => reduces an radian angle to [-π, π].
+- ConvertToDegrees(x) => converts a radian angle to degrees.
+- ConvertToRadians(x) => converts a degree angle to radians.
+
 ## Inverse Trigonometric
 - Arcsin(x) => returns the angle y when sin(y) = x in radians (inverse sine).
 - Arccos(x) =>  returns the angle y when cos(y) = x in radians (inverse cosine).
 - Arctan(x) =>  returns the angle y when tan(y) = x in radians (inverse tangent).
-
+- Arccsc(x) => returns the angle y when csc(y) = x in radians (inverse cosecant).
+- Arcsec(x) =>  returns the angle y when sec(y) = x in radians (inverse secant).
+- Arccot(x) =>  returns the angle y when cot(y) = x in radians (inverse cotangent).
+  
 ## Hyperbolic Trigonometric
 - Sinh(x) => returns the hyperbolic sine of an angle, x in radians.
 - Cosh(x) => returns the hyperbolic cosine of an angle, x in radians.
@@ -55,6 +63,7 @@
 - Round(x) => rounds a number up if it's decimals are above 0.5 and down if they're below.
 - Floor(x) => round down a number.
 - Ceil(x) => rounds up a number.
+- Decimals(n, d) => reduces the decimals of the number n to the specified decimals d.
 
 ## Calculus
 - Integral(func, a, b) => returns the definite integral of the function string 'func' going from a to b.  
