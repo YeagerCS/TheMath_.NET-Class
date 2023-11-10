@@ -68,5 +68,16 @@ Some functions like ln(x), sqrt(x) and nroot(x) are calculated using Newtons met
 </p>
 This method allows for a efficient and accurate calculation of these functions.
 
+## Trig functions
+The trig functions are implemented by their taylor series definition.
+<p align="center">
+  <img src="https://pbs.twimg.com/media/DJfUzO4VoAAKNgj.jpg" alt="newtons method" width="500"/>
+</p>
+
+
 ## Inverse Trig functions
 The simplest and most accurate algorithm to code is the arctan(x), which is why the other inverse functions are defined using an arctan identity. These are the deriviations of this type of identities:
+<p align="center">
+  <img src="TheMath\images\arcsin.png" alt="newtons method" width="500"/>
+</p>  
+The arccos is just arccos(x) = π/2 - arcsin(x)
