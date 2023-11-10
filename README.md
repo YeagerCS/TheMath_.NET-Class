@@ -71,13 +71,19 @@ This method allows for a efficient and accurate calculation of these functions.
 ## Trig functions
 The trig functions are implemented by their taylor series definition.
 <p align="center">
-  <img src="https://pbs.twimg.com/media/DJfUzO4VoAAKNgj.jpg" alt="newtons method" width="500"/>
+  <img src="https://pbs.twimg.com/media/DJfUzO4VoAAKNgj.jpg" alt="taylor series" width="500"/>
 </p>
 
 
 ## Inverse Trig functions
 The simplest and most accurate algorithm to code is the arctan(x), which is why the other inverse functions are defined using an arctan identity. These are the deriviations of this type of identities:
 <p align="center">
-  <img src="TheMath\images\arcsin.png" alt="newtons method" width="500"/>
+  <img src="TheMath\images\arcsin.png" alt="arcsin definiotn" width="500"/> <img src="https://www.rapidtables.com/math/trigonometry/arcsin/arcsin-graph.png" alt="arcsin graph" width="200"/>
 </p>  
 The arccos is just arccos(x) = π/2 - arcsin(x)
+
+## Trapezoidal Rule
+The definite integral is calculated using the trapezoidal rule:
+<p align="center">
+  <img src="https://www.bragitoff.com/wp-content/uploads/2015/08/TrapezoidRule1.png" alt="trapezoidal rule" width="500"/>
+</p>
