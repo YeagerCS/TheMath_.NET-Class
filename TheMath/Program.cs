@@ -6,7 +6,7 @@ namespace TheMath
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(TheMath.TheNthRoot(2, 512));
+            Console.WriteLine(TheMath.IsPrime(11));
         }
 
         public void Test()

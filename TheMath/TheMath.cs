@@ -12,8 +12,8 @@ namespace TheMath
 
         public const double PI = 3.1415926535897932384;
         public const double E = 2.7182818284590452353;
-        public const double RADIANS_TO_DEGREES = 180 / PI;
-        public const double DEGREES_TO_RADIANS = PI / 180;
+        private const double RADIANS_TO_DEGREES = 180 / PI;
+        private const double DEGREES_TO_RADIANS = PI / 180;
 
         //Algebra
 
@@ -40,6 +40,38 @@ namespace TheMath
         public static double TheHyp(int a, int b)
         {
             return TheSqrt(ThePow(a, 2) + ThePow(b, 2));
+        }
+
+        public static bool IsPrime(int n)
+        {
+            if(n <= 1)
+            {
+                return false;
+            }
+
+            for(int i = 2; i <= n/2; i++)
+            {
+                if(n % i == 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns>The total distance between the points p1 and p2</returns>
+        public static double ThePointDistance((double x, double y) p1, (double x, double y) p2)
+        {
+            double deltaX = p2.x - p1.x;
+            double deltaY = p2.y - p2.y;
+
+            return TheSqrt(ThePow(deltaX, 2) + ThePow(deltaY, 2));
         }
 
         private static double TheSimplePow(double n, uint x)
@@ -86,30 +118,43 @@ namespace TheMath
         }
 
         /// <summary>
-        /// Calculates the definite integral of a function with respect to x.
-        /// Uses org.mariuszgromada.math.mxparser to parse a function string
+        /// 
         /// </summary>
-        /// <param name="functionString">The mathemtical expression representing a function f(x)</param>
-        /// <param name="a">Lower limit of integration</param>
-        /// <param name="b">Upper limit of integration</param>
-        /// <returns>The definite integral from a to b of inputted functionString</returns>
-        public static double TheIntegral(string functionString, double a, double b)
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns>The greatest common divider of two integers</returns>
+        public static int GCD(int a, int b)
         {
-            Expression expression = new Expression(functionString, new Argument("x"));
-            License.iConfirmNonCommercialUse("TheMath");
-            Function func = new Function("f(x) = " + functionString);
+            a = (int)TheAbs(a);
+            b = (int)TheAbs(b);
 
-            const double n = 1e+3;
-            double dx = (b - a) / n;
-            double sum = .5 * (func.calculate(a) + func.calculate(b));
-
-            for(int i = 1; i < n; i++)
+            while(b != 0)
             {
-                double x = a + i * dx;
-                sum += func.calculate(x);
+                int temp = b;
+                b = a % b;
+                a = temp;
             }
 
-            return dx * sum;
+            return a;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns>The least common multiple of two integers</returns>
+        public static int LCM(int a, int b)
+        {
+            if(a == 0 || b == 0)
+            {
+                return 0;
+            }
+
+            a = (int)TheAbs(a);
+            b = (int)TheAbs(b);
+
+            return (a / GCD(a, b)) * b;
         }
 
         public static double ThePow(double b, double x)
@@ -250,13 +295,12 @@ namespace TheMath
         /// </summary>
         /// <param name="x"></param>
         /// <returns>The cosecant (inverse sine) of x</returns>
-        /// <exception cref="ArgumentException"></exception>
         public static double TheCsc(double x)
         {
             x = ReduceAngle(x);
             if(x % PI == 0)
             {
-                throw new ArgumentException("X is outside of the domain of csc x");
+                return double.NaN;
             }
 
             return 1 / TheSin(x);
@@ -267,13 +311,12 @@ namespace TheMath
         /// </summary>
         /// <param name="x"></param>
         /// <returns>The secant (inverse cosine) of x</returns>
-        /// <exception cref="ArgumentException"></exception>
         public static double TheSec(double x)
         {
             x = ReduceAngle(x);
             if(x % (PI / 2) == 0)
             {
-                throw new ArgumentException("X is outside of the domain of sec x");
+                return double.NaN;
             }
             return 1 / TheCos(x);
         }
@@ -283,12 +326,11 @@ namespace TheMath
         /// </summary>
         /// <param name="x"></param>
         /// <returns>The cotangent (inverse tangent) of x</returns>
-        /// <exception cref="ArgumentException"></exception>
         public static double TheCot(double x)
         {
             if(x % PI == 0)
             {
-                throw new ArgumentException("X is outside of the domain of cot x");
+                return double.NaN;
             }
 
             return 1 / TheTan(x);
@@ -345,12 +387,11 @@ namespace TheMath
         /// </summary>
         /// <param name="x"></param>
         /// <returns>The angle in radians</returns>
-        /// <exception cref="ArgumentException"></exception>
         public static double TheArcSin(double x)
         {
             if (x < -1 || x > 1)
             {
-                throw new ArgumentException(x + " is out of the range of arcsin");
+                return double.NaN;
             }
 
             double result = TheArcTan(x / TheSqrt(1 - (x * x)));
@@ -410,12 +451,11 @@ namespace TheMath
         /// </summary>
         /// <param name="x"></param>
         /// <returns>The angle in radians</returns>
-        /// <exception cref="ArgumentException"></exception>
         public static double TheArcCos(double x)
         {
             if (x < -1 || x > 1)
             {
-                throw new ArgumentException(x + " is out of the range of arcsin");
+                return double.NaN;
             }
 
             double result = (PI / 2) - TheArcSin(x);
@@ -423,7 +463,73 @@ namespace TheMath
             return result;
         }
 
-        private static double ReduceAngle(double x)
+        //by identity arccsc = arcsin(1/x)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns>The angle in radians</returns>
+        public static double TheArcCsc(double x)
+        {
+            if(x > -1 && x < 1)
+            {
+                return TheArcSin(1 / x);
+            }
+            else
+            {
+                return double.NaN;
+            }
+        }
+
+
+        //by identity arcsec(x) = arccos(1/x)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns>The angle in radians</returns>
+        public static double TheArcSec(double x)
+        {
+            if (x > -1 && x < 1)
+            {
+                return TheArcCos(1 / x);
+            }
+            else
+            {
+                return double.NaN;
+            }
+        }
+
+
+        //by identity arccot(x) = arctan(1/x)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns>The angle in radians</returns>
+        public static double TheArcCot(double x)
+        {
+            if(x != 0)
+            {
+                return TheArcTan(1 / x);
+            }
+            else
+            {
+                return double.NaN;
+            }
+        }
+
+        public static double TheConvertToDegrees(double rad)
+        {
+            return RADIANS_TO_DEGREES * rad;
+        }
+
+        public static double TheConvertToRadians(double deg)
+        {
+            return DEGREES_TO_RADIANS * deg;
+        }
+
+        public static double ReduceAngle(double x)
         {
             x = x % (2 * Math.PI); // Reduce to the range [0, 2*pi]
             if (x > Math.PI)
@@ -487,7 +593,6 @@ namespace TheMath
         /// </summary>
         /// <param name="x"></param>
         /// <returns>The angle in radians</returns>
-        /// <exception cref="ArgumentException"></exception>
         public static double TheArcCosh(double x)
         {
             if(x >= 1)
@@ -496,7 +601,7 @@ namespace TheMath
             }
             else
             {
-                throw new ArgumentException("Input x must be greater than or equal to 1");
+                return double.NaN;
             }
         }
 
@@ -506,7 +611,6 @@ namespace TheMath
         /// </summary>
         /// <param name="x"></param>
         /// <returns>The angle in radians</returns>
-        /// <exception cref="ArgumentException"></exception>
         public static double TheArcTanh(double x)
         {
             if(x > -1 && x < 1)
@@ -515,8 +619,58 @@ namespace TheMath
             }
             else
             {
-                throw new ArgumentException("Input x must be greater than -1 and less than 1");
+                return double.NaN;
             }
+        }
+
+
+        // Calculus
+
+        /// <summary>
+        /// Calculates the definite integral of a function with respect to x.
+        /// Uses org.mariuszgromada.math.mxparser to parse a function string
+        /// </summary>
+        /// <param name="functionString">The mathemtical expression representing a function f(x)</param>
+        /// <param name="a">Lower limit of integration</param>
+        /// <param name="b">Upper limit of integration</param>
+        /// <returns>The definite integral from a to b of inputted functionString</returns>
+        public static double TheIntegral(string functionString, double a, double b)
+        {
+            Expression expression = new Expression(functionString, new Argument("x"));
+            License.iConfirmNonCommercialUse("TheMath");
+            Function func = new Function("f(x) = " + functionString);
+
+            const double n = 1e+3;
+            double dx = (b - a) / n;
+            double sum = .5 * (func.calculate(a) + func.calculate(b));
+
+            for (int i = 1; i < n; i++)
+            {
+                double x = a + i * dx;
+                sum += func.calculate(x);
+            }
+
+            return dx * sum;
+        }
+
+        /// <summary>
+        /// Calculates the derivative of a function with respect to x at given point.
+        /// Uses org.mariuszgromada.math.mxparser to parse a function string
+        /// </summary>
+        /// <param name="functionString">The mathemtical expression representing a function f(x)</param>
+        /// <param name="point">The point at which the derivative is calculated</param>
+        /// <returns>The derivative of a function f(x) at given point</returns>
+        public static double TheDerivative(string functionString, double point)
+        {
+            Expression expression = new Expression(new Argument("x"));
+
+            License.iConfirmNonCommercialUse("TheMath");
+            Function func = new Function("f(x) = " + functionString);
+
+            const double h = 1e-8;
+            double derivative = (func.calculate(point + h) - func.calculate(point - h)) / (2 * h);
+
+            return derivative;
         }
 
 
@@ -559,6 +713,120 @@ namespace TheMath
             return (int)x + 1;
         }
 
+        public static double TheDecimals(double n, double l)
+        {
+            if(l < 0)
+            {
+                throw new ArgumentException("Decimal places can't be negative");
+            }
 
+            double multiplier = ThePow(10, l);
+            return TheRound(n * multiplier) / multiplier;
+        }
+
+
+        // Statistics
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="numbers"></param>
+        /// <returns>The mean (average) of a list of numbers</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static double TheMean(IEnumerable<double> numbers)
+        {
+            if(numbers == null || !numbers.Any())
+            {
+                throw new ArgumentException("The list of numbers is null or empty");
+            }
+
+            return numbers.Sum() / numbers.Count();
+        }
+
+        /// <summary>
+        /// Calculates the median, which is the value where 50% of the values are above and 50% below it.
+        /// </summary>
+        /// <param name="numbers"></param>
+        /// <returns>The median of a list of numbers</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static double TheMedian(IEnumerable<double> numbers)
+        {
+            if (numbers == null || !numbers.Any())
+            {
+                throw new ArgumentException("The list of numbers is null or empty");
+            }
+
+            var sortedNumbers = numbers.OrderBy(n => n).ToList();
+            int count = sortedNumbers.Count;
+
+            if (count % 2 == 0)
+            {
+                int middleIndex1 = count / 2 - 1;
+                int middleIndex2 = count / 2;
+                return (sortedNumbers[middleIndex1] + sortedNumbers[middleIndex2]) / 2;
+            }
+            else
+            {
+                int middleIndex = count / 2;
+                return sortedNumbers[middleIndex];
+            }
+        }
+
+        /// <summary>
+        /// Calculates the mode, which are the numbers that appear most in a list
+        /// </summary>
+        /// <param name="numbers"></param>
+        /// <returns>The mode of a list of numbers</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static List<double> TheMode(IEnumerable<double> numbers)
+        {
+            if (numbers == null || !numbers.Any())
+            {
+                throw new ArgumentException("The list of numbers is empty or null.");
+            }
+
+            Dictionary<double, int> frequencyDict = new Dictionary<double, int>();
+            foreach (var number in numbers)
+            {
+                if (frequencyDict.ContainsKey(number))
+                    frequencyDict[number]++;
+                else
+                    frequencyDict[number] = 1;
+            }
+
+            int maxFrequency = frequencyDict.Values.Max();
+            return frequencyDict.Where(kv => kv.Value == maxFrequency).Select(kv => kv.Key).ToList();
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="numbers"></param>
+        /// <returns>The variance of a list of numbers</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static double TheVariance(IEnumerable<double> numbers)
+        {
+            if (numbers == null || !numbers.Any())
+            {
+                throw new ArgumentException("The list of numbers is empty or null.");
+            }
+
+            double mean = TheMean(numbers);
+            double sumOfSquares = numbers.Sum(n => Math.Pow(n - mean, 2));
+
+            return sumOfSquares / numbers.Count();
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="numbers"></param>
+        /// <returns>The standard deviation of a list of numbers</returns>
+        public static double TheStandardDeviation(IEnumerable<double> numbers)
+        {
+            return TheSqrt(TheVariance(numbers));
+        }
     }
 }
