@@ -75,6 +75,8 @@ The trig functions are implemented by their taylor series definition.
   <img src="https://pbs.twimg.com/media/DJfUzO4VoAAKNgj.jpg" alt="taylor series" width="500"/>
 </p>
 
+## e^x
+e^x is programmed with the Maclaurin series...
 
 ## Inverse Trig functions
 The simplest and most accurate algorithm to code is the arctan(x), which is why the other inverse functions are defined using an arctan identity. These are the deriviations of this type of identities:
