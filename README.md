@@ -17,6 +17,10 @@
 - Pow(a, b) => returns a to the power of b.
 - Sqrt(x) => returns the square root of a number.
 - Nroot(n, x) => returns the nth root of a number.
+- IsPrime(x) => returns whether a number is prime or not.
+- GCD(a, b) => returns the greatest common divisor of two numbers.
+- LCM(a, b) => returns the least common multiple of two numbers.
+- PointDistance((x, y), (x, y)) => returns the total distance of two points.
 
 ## Exponential / Logarithmic
 - Exp(x) => return e to the power of x.
@@ -68,6 +72,15 @@
 ## Calculus
 - Integral(func, a, b) => returns the definite integral of the function string 'func' going from a to b.  
   The method takes a function string like "ln(x)x^2" and this string is converted to an actual function by utilizing the ```org.mariuszgromada.math.mxparser``` NuGet package.
+- Derivative(func, x) => returns the derivative of the function string 'func' at point x.
+  The method works the same as the Integral method.
+
+## Statistics
+- Mean(list) => returns the average of a list of numbers.
+- Median(list) => returns the median of a list of numbers.
+- Mode(list) => returns the mode of a list of numbers.
+- Variance(list) => returns the variance of a list of numbers.
+- StandardDeviation(list) => returns the standard deviation of a list of numbers.
 
 # Details
 
@@ -85,7 +98,10 @@ The trig functions are implemented by their taylor series definition.
 </p>
 
 ## e^x
-e^x is programmed with the Maclaurin series...
+e^x is programmed with the Maclaurin series:
+<p align="center">
+  <img src="https://machinelearningmastery.com/wp-content/uploads/2021/07/tayloreq8.png" alt="e^x maclaurin series" width="500"/>
+</p>
 
 ## Inverse Trig functions
 The simplest and most accurate algorithm to code is the arctan(x), which is why the other inverse functions are defined using an arctan identity. These are the deriviations of this type of identities:
@@ -100,9 +116,16 @@ The definite integral is calculated using the trapezoidal rule:
   <img src="https://www.bragitoff.com/wp-content/uploads/2015/08/TrapezoidRule1.png" alt="trapezoidal rule" width="500"/>
 </p>
 
+## Central Difference
+The derivative is calculated using the central difference formula:
+<p align="center">
+  <img src="TheMath\images\central_diff.png" alt="central difference" width="500"/>
+</p>
+
 ## Sources
 Images:
 - <a href="https://pbs.twimg.com">Pbs Twimg</a>
 - <a href="https://encrypted-tbn0.gstatic.com">encrypted-tbn0.gstatic.com</a>
 - <a href="https://www.rapidtables.com">Rapidtables</a>
 - <a href="https://www.bragitoff.com">Bragitoff</a>
+- <a href="https://machinelearningmastery.com/wp-content/uploads/2021/07/tayloreq8.png">machinelearningmastery</a>
