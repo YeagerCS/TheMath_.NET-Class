@@ -72,7 +72,7 @@
 ## Calculus
 - Integral(func, a, b) => returns the definite integral of the function string 'func' going from a to b.  
   The method takes a function string like "ln(x)x^2" and this string is converted to an actual function by utilizing the ```org.mariuszgromada.math.mxparser``` NuGet package.
-- Derivative(func, x) => returns the derivative of the function string 'func' at point x.
+- Derivative(func, x) => returns the derivative of the function string 'func' at point x.  
   The method works the same as the Integral method.
 
 ## Statistics
