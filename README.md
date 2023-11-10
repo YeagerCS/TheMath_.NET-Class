@@ -129,3 +129,4 @@ Images:
 - <a href="https://www.rapidtables.com">Rapidtables</a>
 - <a href="https://www.bragitoff.com">Bragitoff</a>
 - <a href="https://machinelearningmastery.com/wp-content/uploads/2021/07/tayloreq8.png">machinelearningmastery</a>
+- <a href="https://mathparser.org/">mathparser.org</a>
