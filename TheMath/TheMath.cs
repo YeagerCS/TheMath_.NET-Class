@@ -154,7 +154,7 @@ namespace TheMath
             a = (int)TheAbs(a);
             b = (int)TheAbs(b);
 
-            return (a / GCD(a, b)) * b;
+            return (a / TheGCD(a, b)) * b;
         }
 
         public static double ThePow(double b, double x)
