@@ -42,7 +42,7 @@ namespace TheMath
             return TheSqrt(ThePow(a, 2) + ThePow(b, 2));
         }
 
-        public static bool IsPrime(int n)
+        public static bool TheIsPrime(int n)
         {
             if(n <= 1)
             {
