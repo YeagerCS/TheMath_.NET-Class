@@ -6,7 +6,7 @@ namespace TheMath
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(TheMath.IsPrime(11));
+            Console.WriteLine(TheMath.TheIsPrime(11));
         }
 
         public void Test()
