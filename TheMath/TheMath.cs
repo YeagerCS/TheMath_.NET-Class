@@ -123,7 +123,7 @@ namespace TheMath
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns>The greatest common divider of two integers</returns>
-        public static int GCD(int a, int b)
+        public static int TheGCD(int a, int b)
         {
             a = (int)TheAbs(a);
             b = (int)TheAbs(b);
@@ -144,7 +144,7 @@ namespace TheMath
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns>The least common multiple of two integers</returns>
-        public static int LCM(int a, int b)
+        public static int TheLCM(int a, int b)
         {
             if(a == 0 || b == 0)
             {
