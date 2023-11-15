@@ -37,6 +37,11 @@ namespace TheMath
             return a == b;
         }
 
+        public static bool TheApproximates(double a, double b, double decimalApproximate = 6)
+        {
+            return TheDecimals(a, decimalApproximate) == TheDecimals(b, decimalApproximate);
+        }
+
         public static double TheHyp(int a, int b)
         {
             return TheSqrt(ThePow(a, 2) + ThePow(b, 2));
@@ -69,7 +74,7 @@ namespace TheMath
         public static double ThePointDistance((double x, double y) p1, (double x, double y) p2)
         {
             double deltaX = p2.x - p1.x;
-            double deltaY = p2.y - p2.y;
+            double deltaY = p2.y - p1.y;
 
             return TheSqrt(ThePow(deltaX, 2) + ThePow(deltaY, 2));
         }
@@ -109,7 +114,15 @@ namespace TheMath
 
         public static int TheSign(double x)
         {
-            return x > 0 ? 1 : -1;
+            if(x > 0)
+            {
+                return 1;
+            } else if (x == 0)
+            {
+                return 0;
+            }
+
+            return -1;
         }
 
         public static int TheTruncate(double x)
